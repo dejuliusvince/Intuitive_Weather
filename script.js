@@ -32,6 +32,8 @@ let card5TempEl = document.querySelector("#card5-temp")
 let card5WindEl = document.querySelector("#card5-wind")
 let card5HumidityEl = document.querySelector("#card5-humidity")
 
+let searchHistoryListEl = document.querySelector("#searchHistoryList")
+
 let api = "43307f36c133c1b4d80feb3644b2ab3e"
 //step2: make an addEventListener on Submit and create displayDashboard - it shows current weather and last five day
 
@@ -111,23 +113,33 @@ function displayWeather(event) {
                     card5HumidityEl.textContent = fiveData.daily[5].humidity + "%"
                     
                     
-                    let searchHistoryArr = JSON.parse(localStorage.getItem("Search History")) || []
+                
+
+                    
+
+                    let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || []
 
                     searchHistoryArr.push(cityEl.value)
 
-                    localStorage.setItem("Search History", JSON.stringify(searchHistoryArr))
-
+                    localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr))
                     
                     
 
                 })
+                
 
         })
     
 
 }
 
+let userSearchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || []
 
+userSearchHistoryArr.forEach(city =>{
+    searchHistoryListEl.innerHTML += `
+    <li class="list-group-item">${city}</li>
+    `
+})
 
 
 
