@@ -38,8 +38,10 @@ let api = "43307f36c133c1b4d80feb3644b2ab3e"
 
 function displayWeather(event) {
     event.preventDefault()
-    var cityName = cityEl.value
-    var urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api}&units=imperial`
+    let cityName = cityEl.value
+    let urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api}&units=imperial`
+
+
 
     fetch(urlCurrent)
         .then(function (response) {
@@ -107,19 +109,25 @@ function displayWeather(event) {
                     card5TempEl.textContent = fiveData.daily[5].temp.day
                     card5WindEl.textContent = fiveData.daily[5].wind_speed + " mph"
                     card5HumidityEl.textContent = fiveData.daily[5].humidity + "%"
+                    
+                    
+                    let searchHistoryArr = JSON.parse(localStorage.getItem("Search History")) || []
 
+                    searchHistoryArr.push(cityEl.value)
 
+                    localStorage.setItem("Search History", JSON.stringify(searchHistoryArr))
 
-
-
-
-                })
-                
+                    
                     
 
                 })
-        
+
+        })
+    
+
 }
+
+
 
 
 
