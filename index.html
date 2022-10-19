@@ -18,103 +18,106 @@
             <h1 class="display-5 fw-bold">Weather Dashboard</h1>
         </div>
     </div>
+    <div class="container-fluid p-4">
+        <div class="row">
+            <div class="col-sm-3 p-2">
+                <form id="city-form">
+                    <div class="  mb-3">
+                        <label for="exampleInputEmail1" class="form-label">
+                            <h4>Search for a City</h4>
+                        </label>
+                        <input class="form-control" id="city">
+                    </div>
 
-    <div class="row">
-        <div class="col-sm-2 pl-3">
-            <form id="city-form">
-                <div class="  mb-3">
-                    <label for="exampleInputEmail1" class="form-label">
-                        <h4>Search for a City</h4>
-                    </label>
-                    <input class="form-control" id="city">
-                </div>
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
 
-                <button type="submit" class="btn btn-primary w-100">Search</button>
-
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
-                </ul>
-            </form>
-        </div>
-        <div class="col-sm-10">
-
-            <div class=" py-2 mb-4 bg-light bg-gradient ">
-                <div class="container-fluid     ">
-                    <h4 id="city-header" class="display-5 fw-bold">Atlanta (3/30/2021)</h4>
-                    <p>Temp: <span id="temp"> 74.01F</span> </p>
-                    <p>Wind: <span id="wind">6.67 MPH</span> </p>
-                    <p>Humidity: <span id="humidity"> 50%</span></p>
-                    <p>UVI: <span id="uvi"> 2.0</span> </p>
-
-                </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A fourth item</li>
+                        <li class="list-group-item">And a fifth one</li>
+                    </ul>
+                </form>
             </div>
+            <div class="col-sm-9 p-0">
 
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 id="city-header-card-1" class="display-5 fw-bold">Atlanta (3/30/2021)</h4>
-                            <p>Temp: <span id="temp-1"> 74.01F</span> </p>
-                            <p>Wind: <span id="wind-1">6.67 MPH</span> </p>
-                            <p>Humidity: <span id="humidity-1"> 50%</span></p>
-                            <p>UVI: <span id="uvi-1"> 2.0</span> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                <div class="py-2 mb-4 bg-light bg-gradient">
+                    <div class="container-fluid">
+                        <h4 id="city-header" class="display-5 fw-bold">Search a city name to begin</h4>
+                        <p>Temp: <span id="temp">(City temperature)</span> </p>
+                        <p>Wind: <span id="wind">(Wind speed)</span> </p>
+                        <p>Humidity: <span id="humidity">(Humidity level)</span></p>
+                        <p>UVI: <span id="uvi">(UV Index)</span></p>
+
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body day">
+                                <h5 id="card1-header" class="card-title">Special title treatment</h5>
+                                <p>Temp: <span id="card1-temp">(City temperature)</span> </p>
+                                <p>Wind: <span id="card1-wind">(Wind speed)</span> </p>
+                                <p>Humidity: <span id="card1-humidity">(Humidity level)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body day">
+                                <h5 id="card2-header" class="card-title">Special title treatment</h5>
+                                <p>Temp: <span id="card2-temp">(City temperature)</span> </p>
+                                <p>Wind: <span id="card2-wind">(Wind speed)</span> </p>
+                                <p>Humidity: <span id="card2-humidity">(Humidity level)</span></p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="col-sm-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body day">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body day">
+                                <h5 class="card-title">DATE</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="col-sm-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"  ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
 
     <script src="./script.js"></script>
 
