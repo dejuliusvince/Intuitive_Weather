@@ -1,4 +1,4 @@
-//step 1 :define all your html static selectors
+//Static selectors for header
 let cityEl = document.querySelector("#city")
 let cityFormEl = document.querySelector("#city-form")
 let cityHeaderEl = document.querySelector("#city-header")
@@ -7,6 +7,7 @@ let windEl = document.querySelector("#wind")
 let humidityEl = document.querySelector("#humidity")
 let uviEl = document.querySelector("#uvi")
 
+//Static selectors for each card displaying future weather data
 let card1HeaderEl = document.querySelector("#card1-header")
 let card1TempEl = document.querySelector("#card1-temp")
 let card1WindEl = document.querySelector("#card1-wind")
@@ -32,12 +33,15 @@ let card5TempEl = document.querySelector("#card5-temp")
 let card5WindEl = document.querySelector("#card5-wind")
 let card5HumidityEl = document.querySelector("#card5-humidity")
 
+//Static selectors for list of search history and individual items
 let searchHistoryListEl = document.querySelector("#searchHistoryList")
+let listItemEl = document.querySelector("#listItem")
 
+//api key
 let api = "43307f36c133c1b4d80feb3644b2ab3e"
-//step2: make an addEventListener on Submit and create displayDashboard - it shows current weather and last five day
 
 
+//function to call api and display weather data for current day in the header, and display weather data for following five days in selected city
 function displayWeather(event) {
     event.preventDefault()
     let cityName = cityEl.value
@@ -66,16 +70,19 @@ function displayWeather(event) {
                     cityHeaderEl.innerHTML = currentData.name + " " + currentDate
                     cityHeaderEl.appendChild(iconImage)
 
-                    tempEl.textContent = currentData.main.temp
+                    tempEl.textContent = currentData.main.temp + " °F"
                     windEl.textContent = currentData.wind.speed + " mph"
                     humidityEl.textContent = currentData.main.humidity
                     uviEl.textContent = fiveData.daily[0].uvi
+
+                    //Each card calling the cooresponding data from api for that day
+                    //-possibly will refractor this to have less repetition in code in the future
 
                     let card1Icon = document.createElement("img")
                     card1Icon.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[1].weather[0].icon}@2x.png`)
                     card1HeaderEl.textContent = moment.unix(fiveData.daily[1].dt).format("MM/DD/YYYY")
                     card1HeaderEl.appendChild(card1Icon)
-                    card1TempEl.textContent = fiveData.daily[1].temp.day
+                    card1TempEl.textContent = fiveData.daily[1].temp.day + " °F"
                     card1WindEl.textContent = fiveData.daily[1].wind_speed + " mph"
                     card1HumidityEl.textContent = fiveData.daily[1].humidity + "%"
 
@@ -84,7 +91,7 @@ function displayWeather(event) {
                     card2Icon.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[2].weather[0].icon}@2x.png`)
                     card2HeaderEl.textContent = moment.unix(fiveData.daily[2].dt).format("MM/DD/YYYY")
                     card2HeaderEl.appendChild(card2Icon)
-                    card2TempEl.textContent = fiveData.daily[2].temp.day
+                    card2TempEl.textContent = fiveData.daily[2].temp.day + " °F" 
                     card2WindEl.textContent = fiveData.daily[2].wind_speed + " mph"
                     card2HumidityEl.textContent = fiveData.daily[2].humidity + "%"
 
@@ -92,7 +99,7 @@ function displayWeather(event) {
                     card3Icon.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[3].weather[0].icon}@2x.png`)
                     card3HeaderEl.textContent = moment.unix(fiveData.daily[3].dt).format("MM/DD/YYYY")
                     card3HeaderEl.appendChild(card3Icon)
-                    card3TempEl.textContent = fiveData.daily[3].temp.day
+                    card3TempEl.textContent = fiveData.daily[3].temp.day + " °F"
                     card3WindEl.textContent = fiveData.daily[3].wind_speed + " mph"
                     card3HumidityEl.textContent = fiveData.daily[3].humidity + "%"
 
@@ -100,7 +107,7 @@ function displayWeather(event) {
                     card4Icon.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[4].weather[0].icon}@2x.png`)
                     card4HeaderEl.textContent = moment.unix(fiveData.daily[4].dt).format("MM/DD/YYYY")
                     card4HeaderEl.appendChild(card4Icon)
-                    card4TempEl.textContent = fiveData.daily[4].temp.day
+                    card4TempEl.textContent = fiveData.daily[4].temp.day + " °F"
                     card4WindEl.textContent = fiveData.daily[4].wind_speed + " mph"
                     card4HumidityEl.textContent = fiveData.daily[4].humidity + "%"
 
@@ -108,44 +115,41 @@ function displayWeather(event) {
                     card5Icon.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[5].weather[0].icon}@2x.png`)
                     card5HeaderEl.textContent = moment.unix(fiveData.daily[5].dt).format("MM/DD/YYYY")
                     card5HeaderEl.appendChild(card5Icon)
-                    card5TempEl.textContent = fiveData.daily[5].temp.day
+                    card5TempEl.textContent = fiveData.daily[5].temp.day + " °F"
                     card5WindEl.textContent = fiveData.daily[5].wind_speed + " mph"
                     card5HumidityEl.textContent = fiveData.daily[5].humidity + "%"
-                    
-                    
-                
 
                     
+
+                    //Need to save  each city name into an array in local storage
+                    //each time a city is searched
+
 
                     let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || []
 
                     searchHistoryArr.push(cityEl.value)
 
                     localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr))
-                    
-                    
+
+                    let userSearchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || []
+
+                    //Render each item in array as a li in the ul of search history on the page below the search input
+                    userSearchHistoryArr.forEach(city => {
+                        searchHistoryListEl.innerHTML += `
+                        <li class="list-group-item past-city">${city}</li>
+                        `
+                    })
 
                 })
-                
+
 
         })
-    
+
 
 }
 
-let userSearchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || []
-
-userSearchHistoryArr.forEach(city =>{
-    searchHistoryListEl.innerHTML += `
-    <li class="list-group-item">${city}</li>
-    `
-})
-
-
-
-
+//Call displayWeather function if user searches a city name
 cityFormEl.addEventListener("submit", displayWeather)
-
 
 
 
