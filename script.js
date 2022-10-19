@@ -13,7 +13,6 @@ function displayWeather(event) {
     var cityName = cityEl.value
     var urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api}&units=imperial`
 
-
     fetch(urlCurrent)
         .then(function (response) {
             return response.json()
@@ -21,28 +20,23 @@ function displayWeather(event) {
         .then(function (currentData) {
 
             console.log(currentData)
-            var fiveDayUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${currentData.coord.lat}&lon=${currentData.coord.lon}&appid=${api}&units=imperial
+            var fiveDayUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentData.coord.lat}&lon=${currentData.coord.lon}&appid=${api}&units=imperial
             `
             fetch(fiveDayUrl)
-            .then(function(response){
-                return response.json()
-            })
-            .then(function(fiveData){
-                console.log(fiveData)
-                var currentDate= moment.unix(currentData.dt).format("MM/DD/YYYY")
-                var iconImage=document.createElement("img")
-                iconImage.setAttribute("src",`http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`)
-                cityHeaderEl.innerHTML=  currentData.name + " "+ currentDate
-                cityHeaderEl.appendChild(iconImage)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (fiveData) {
+                    console.log(fiveData)
+                    var currentDate = moment.unix(currentData.dt).format("MM/DD/YYYY")
+                    var iconImage = document.createElement("img")
+                    iconImage.setAttribute("src", `http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`)
+                    cityHeaderEl.innerHTML = currentData.name + " " + currentDate
+                    cityHeaderEl.appendChild(iconImage)
 
-                
-                TempEl.textContent=currentData.main.temp 
-                 
-
-            })
+                    TempEl.textContent = currentData.main.temp
+                })
         })
-
-
 }
 
 
