@@ -10,5 +10,8 @@ A screenshot below shows the app's current appearance and functionality.
 ![Screenshot showing the UI design](./weather-dashboard_screenshot.png)
 
 ## Links
-link 
+link to GitHub repository: https://github.com/dejuliusvince/Intuitive_Weather </br>
+link to deployed application: https://dejuliusvince.github.io/Intuitive_Weather/
+
+
 
